@@ -2529,12 +2529,15 @@ PHPAPI bool php_execute_script_ex(zend_file_handle *primary_file, zval *retval)
 		}
 
 		if (prepend_file_p && result) {
+			printf("PREPEND AND RESULT");
 			result = zend_execute_script(ZEND_REQUIRE, NULL, prepend_file_p) == SUCCESS;
 		}
 		if (result) {
+			printf("RESULT\n");
 			result = zend_execute_script(ZEND_REQUIRE, retval, primary_file) == SUCCESS;
 		}
 		if (append_file_p && result) {
+			printf("APPEND AND RESULT");
 			result = zend_execute_script(ZEND_REQUIRE, NULL, append_file_p) == SUCCESS;
 		}
 	} zend_catch {

@@ -946,6 +946,7 @@ do_repeat:
 		zend_is_auto_global(ZSTR_KNOWN(ZEND_STR_AUTOGLOBAL_SERVER));
 
 		PG(during_request_startup) = 0;
+		printf("Starting CLI %d\n", context.mode);
 		switch (context.mode) {
 		case PHP_CLI_MODE_STANDARD:
 			cli_register_file_handles();

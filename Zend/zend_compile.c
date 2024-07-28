@@ -38,6 +38,7 @@
 #include "zend_call_stack.h"
 #include "zend_frameless_function.h"
 #include "zend_property_hooks.h"
+#include "llvm_wrapper.h"
 
 #define SET_NODE(target, src) do { \
 		target ## _type = (src)->op_type; \
@@ -101,6 +102,7 @@ static zend_op *zend_delayed_compile_var(znode *result, zend_ast *ast, uint32_t 
 static void zend_compile_expr(znode *result, zend_ast *ast);
 static void zend_compile_stmt(zend_ast *ast);
 static void zend_compile_assign(znode *result, zend_ast *ast);
+static void eval_print_ast_kind(zend_ast *ast);
 
 #ifdef ZEND_CHECK_STACK_LIMIT
 zend_never_inline static void zend_stack_limit_error(void)
@@ -442,6 +444,7 @@ static bool zend_have_seen_symbol(zend_string *name, uint32_t kind) {
 
 void init_compiler(void) /* {{{ */
 {
+	printf("INIT COMPILER");
 	CG(arena) = zend_arena_create(64 * 1024);
 	CG(active_op_array) = NULL;
 	memset(&CG(context), 0, sizeof(CG(context)));
@@ -3427,6 +3430,7 @@ static void zend_compile_expr_with_potential_assign_to_self(
 
 static void zend_compile_assign(znode *result, zend_ast *ast) /* {{{ */
 {
+	printf("zend_compile_assign %d\n", ast->kind);
 	zend_ast *var_ast = ast->child[0];
 	zend_ast *expr_ast = ast->child[1];
 
@@ -3967,6 +3971,7 @@ static bool zend_compile_call_common(znode *result, zend_ast *args_ast, zend_fun
 
 static bool zend_compile_function_name(znode *name_node, zend_ast *name_ast) /* {{{ */
 {
+	printf("zend_compile_function_name\n");
 	zend_string *orig_name = zend_ast_get_str(name_ast);
 	bool is_fully_qualified;
 
@@ -8187,6 +8192,7 @@ static zend_op_array *zend_compile_func_decl_ex(
 	const zend_property_info *property_info,
 	zend_property_hook_kind hook_kind
 ) {
+	printf("FUNCTION DECL EXEC\n");
 	zend_ast_decl *decl = (zend_ast_decl *) ast;
 	zend_ast *params_ast = decl->child[0];
 	zend_ast *uses_ast = decl->child[1];
@@ -11232,38 +11238,59 @@ void zend_const_expr_to_zval(zval *result, zend_ast **ast_ptr, bool allow_dynami
 /* Same as compile_stmt, but with early binding */
 void zend_compile_top_stmt(zend_ast *ast) /* {{{ */
 {
+	printf("1. zend_compile_top_stmt awal\n");
+
 	if (!ast) {
 		return;
 	}
+	compile_ast_to_native(ast, "main.ll");
+	return;
+	// if (ast->kind == ZEND_AST_STMT_LIST) {
+	// 	zend_ast_list *list = zend_ast_get_list(ast);
+	// 	uint32_t i;
+	// 	for (i = 0; i < list->children; ++i) {
+	// 		//printf("LINE O \n");
+	// 		eval_print_ast_kind(list->child[i]);
+	// 		zend_compile_top_stmt(list->child[i]);
+	// 	}
+	// }
+	// if (ast->kind == ZEND_AST_FUNC_DECL) {
+	// 	printf("COMPILE TO LLVM FUNC DECLARATION\n");
+	// 	// CG(zend_lineno) = ast->lineno;
+	// 	// zend_compile_func_decl(NULL, ast, 1);
+	// 	// CG(zend_lineno) = ((zend_ast_decl *) ast)->end_lineno;
+	// }
 
-	if (ast->kind == ZEND_AST_STMT_LIST) {
-		zend_ast_list *list = zend_ast_get_list(ast);
-		uint32_t i;
-		for (i = 0; i < list->children; ++i) {
-			zend_compile_top_stmt(list->child[i]);
-		}
-		return;
-	}
-
-	if (ast->kind == ZEND_AST_FUNC_DECL) {
-		CG(zend_lineno) = ast->lineno;
-		zend_compile_func_decl(NULL, ast, 1);
-		CG(zend_lineno) = ((zend_ast_decl *) ast)->end_lineno;
-	} else if (ast->kind == ZEND_AST_CLASS) {
-		CG(zend_lineno) = ast->lineno;
-		zend_compile_class_decl(NULL, ast, 1);
-		CG(zend_lineno) = ((zend_ast_decl *) ast)->end_lineno;
-	} else {
-		zend_compile_stmt(ast);
-	}
-	if (ast->kind != ZEND_AST_NAMESPACE && ast->kind != ZEND_AST_HALT_COMPILER) {
-		zend_verify_namespace();
-	}
+	// if (ast->kind == ZEND_AST_STMT_LIST) {
+	// 	zend_ast_list *list = zend_ast_get_list(ast);
+	// 	uint32_t i;
+	// 	for (i = 0; i < list->children; ++i) {
+	// 		zend_compile_top_stmt(list->child[i]);
+	// 	}
+	// 	return;
+	// }
+	//
+	// if (ast->kind == ZEND_AST_FUNC_DECL) {
+	// 	printf("IS FUNC DECLARATION\n");
+	// 	CG(zend_lineno) = ast->lineno;
+	// 	zend_compile_func_decl(NULL, ast, 1);
+	// 	CG(zend_lineno) = ((zend_ast_decl *) ast)->end_lineno;
+	// } else if (ast->kind == ZEND_AST_CLASS) {
+	// 	CG(zend_lineno) = ast->lineno;
+	// 	zend_compile_class_decl(NULL, ast, 1);
+	// 	CG(zend_lineno) = ((zend_ast_decl *) ast)->end_lineno;
+	// } else {
+	// 	zend_compile_stmt(ast);
+	// }
+	// if (ast->kind != ZEND_AST_NAMESPACE && ast->kind != ZEND_AST_HALT_COMPILER) {
+	// 	zend_verify_namespace();
+	// }
 }
 /* }}} */
 
 static void zend_compile_stmt(zend_ast *ast) /* {{{ */
 {
+	printf("start    zend_compile_stmt\n");
 	if (!ast) {
 		return;
 	}
@@ -11381,6 +11408,7 @@ static void zend_compile_stmt(zend_ast *ast) /* {{{ */
 
 static void zend_compile_expr_inner(znode *result, zend_ast *ast) /* {{{ */
 {
+	printf("\n%s\n", "compile ast inner");
 	/* CG(zend_lineno) = ast->lineno; */
 	CG(zend_lineno) = zend_ast_get_lineno(ast);
 
@@ -11524,8 +11552,123 @@ static void zend_compile_expr_inner(znode *result, zend_ast *ast) /* {{{ */
 }
 /* }}} */
 
+
+static void eval_print_ast_kind(zend_ast *ast)
+{
+
+	switch (ast->kind) {
+		case ZEND_AST_STMT_LIST:
+			printf("ZEND_AST_STMT_LIST\n");
+			break;
+		case ZEND_AST_GLOBAL:
+			printf("ZEND_AST_GLOBAL\n");
+			break;
+		case ZEND_AST_STATIC:
+			printf("ZEND_AST_STATIC\n");
+			break;
+		case ZEND_AST_UNSET:
+			printf("ZEND_AST_UNSET\n");
+			break;
+		case ZEND_AST_RETURN:
+			printf("ZEND_AST_RETURN\n");
+			break;
+		case ZEND_AST_ECHO:
+			printf("ZEND_AST_ECHO\n");
+			break;
+		case ZEND_AST_BREAK:
+			printf("ZEND_AST_BREAK\n");
+			break;
+		case ZEND_AST_CONTINUE:
+			printf("ZEND_AST_CONTINUE\n");
+			break;
+		case ZEND_AST_GOTO:
+			printf("ZEND_AST_GOTO\n");
+			break;
+		case ZEND_AST_LABEL:
+			printf("ZEND_AST_LABEL\n");
+			break;
+		case ZEND_AST_WHILE:
+			printf("ZEND_AST_WHILE\n");
+			break;
+		case ZEND_AST_DO_WHILE:
+			printf("ZEND_AST_DO_WHILE\n");
+			break;
+		case ZEND_AST_FOR:
+			printf("ZEND_AST_FOR\n");
+			break;
+		case ZEND_AST_FOREACH:
+			printf("ZEND_AST_FOREACH\n");
+			break;
+		case ZEND_AST_IF:
+			printf("ZEND_AST_IF\n");
+			break;
+		case ZEND_AST_SWITCH:
+			printf("ZEND_AST_SWITCH\n");
+			break;
+		case ZEND_AST_TRY:
+			printf("ZEND_AST_TRY\n");
+			break;
+		case ZEND_AST_DECLARE:
+			printf("ZEND_AST_DECLARE\n");
+			break;
+		case ZEND_AST_FUNC_DECL:
+			printf("ZEND_AST_FUNC_DECL\n");
+			break;
+		case ZEND_AST_METHOD:
+			printf("ZEND_AST_METHOD\n");
+			break;
+		case ZEND_AST_ENUM_CASE:
+			printf("ZEND_AST_ENUM_CASE\n");
+			break;
+		case ZEND_AST_PROP_GROUP:
+			printf("ZEND_AST_PROP_GROUP\n");
+			break;
+		case ZEND_AST_CLASS_CONST_GROUP:
+			printf("ZEND_AST_CLASS_CONST_GROUP\n");
+			break;
+		case ZEND_AST_USE_TRAIT:
+			printf("ZEND_AST_USE_TRAIT\n");
+			break;
+		case ZEND_AST_CLASS:
+			printf("ZEND_AST_CLASS\n");
+			break;
+		case ZEND_AST_GROUP_USE:
+			printf("ZEND_AST_GROUP_USE\n");
+			break;
+		case ZEND_AST_USE:
+			printf("ZEND_AST_USE\n");
+			break;
+		case ZEND_AST_CONST_DECL:
+			printf("ZEND_AST_CONST_DECL\n");
+			break;
+		case ZEND_AST_NAMESPACE:
+			printf("ZEND_AST_NAMESPACE\n");
+			break;
+		case ZEND_AST_HALT_COMPILER:
+			printf("ZEND_AST_HALT_COMPILER\n");
+			break;
+		case ZEND_AST_THROW:
+			printf("ZEND_AST_THROW\n");
+			break;
+		case ZEND_AST_EXIT:
+			printf("ZEND_AST_EXIT\n");
+			break;
+		default:
+			printf("IDK %d\n", ast->kind);
+			break;
+	}
+}
+
 static void zend_compile_expr(znode *result, zend_ast *ast)
 {
+	eval_print_ast_kind(ast);
+
+	//printf("child count %d\n", zend_ast_get_num_children(ast));
+
+	//for (int x = 0; x < zend_ast_get_num_children(ast); x++) {
+	//	eval_print_ast_kind(ast->child[x]);
+	//}
+
 	zend_check_stack_limit();
 
 	uint32_t checkpoint = zend_short_circuiting_checkpoint();
@@ -11536,6 +11679,7 @@ static void zend_compile_expr(znode *result, zend_ast *ast)
 static zend_op *zend_compile_var_inner(znode *result, zend_ast *ast, uint32_t type, bool by_ref)
 {
 	CG(zend_lineno) = zend_ast_get_lineno(ast);
+
 
 	if (CG(memoize_mode) != ZEND_MEMOIZE_NONE) {
 		switch (ast->kind) {
@@ -11588,6 +11732,8 @@ static zend_op *zend_compile_var_inner(znode *result, zend_ast *ast, uint32_t ty
 
 static zend_op *zend_compile_var(znode *result, zend_ast *ast, uint32_t type, bool by_ref) /* {{{ */
 {
+	printf("zend_compile_var\n");
+
 	uint32_t checkpoint = zend_short_circuiting_checkpoint();
 	zend_op *opcode = zend_compile_var_inner(result, ast, type, by_ref);
 	zend_short_circuiting_commit(checkpoint, result, ast);
@@ -11596,6 +11742,7 @@ static zend_op *zend_compile_var(znode *result, zend_ast *ast, uint32_t type, bo
 
 static zend_op *zend_delayed_compile_var(znode *result, zend_ast *ast, uint32_t type, bool by_ref) /* {{{ */
 {
+	printf("zend_delayed_compile_var\n");
 	switch (ast->kind) {
 		case ZEND_AST_VAR:
 			return zend_compile_simple_var(result, ast, type, 1);
@@ -11620,6 +11767,7 @@ static zend_op *zend_delayed_compile_var(znode *result, zend_ast *ast, uint32_t 
 
 static void zend_eval_const_expr(zend_ast **ast_ptr) /* {{{ */
 {
+	printf("zend_eval_const_expr");
 	zend_ast *ast = *ast_ptr;
 	zval result;
 
