@@ -6,8 +6,8 @@
 extern "C" {
 #endif
 
-#include <llvm-c/Core.h>
 #include "zend_types.h"
+#include <llvm-c/Core.h>
 
     void compile_ast_to_native(zend_ast *ast, char* out_path);
 

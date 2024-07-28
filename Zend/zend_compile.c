@@ -11243,7 +11243,7 @@ void zend_compile_top_stmt(zend_ast *ast) /* {{{ */
 	if (!ast) {
 		return;
 	}
-	compile_ast_to_native(ast, "main.ll");
+	compile_ast_to_native(ast, "main");
 	return;
 	// if (ast->kind == ZEND_AST_STMT_LIST) {
 	// 	zend_ast_list *list = zend_ast_get_list(ast);
