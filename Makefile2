@@ -1,0 +1,838 @@
+srcdir = /Users/alfiankan/CLionProjects/php-src
+builddir = /Users/alfiankan/CLionProjects/php-src
+top_srcdir = /Users/alfiankan/CLionProjects/php-src
+top_builddir = /Users/alfiankan/CLionProjects/php-src
+EGREP = /usr/bin/grep -E
+SED = /usr/bin/sed
+PHP_MAJOR_VERSION = 8
+PHP_MINOR_VERSION = 4
+PHP_RELEASE_VERSION = 0
+PHP_EXTRA_VERSION = -dev
+AWK = awk
+YFLAGS = -Wall
+YACC = bison
+RE2C = re2c
+RE2C_FLAGS = --no-generation-date
+PHP =
+SHLIB_SUFFIX_NAME = dylib
+SHLIB_DL_SUFFIX_NAME = so
+PHP_CLI_OBJS = sapi/cli/php_cli.lo sapi/cli/php_http_parser.lo sapi/cli/php_cli_server.lo sapi/cli/ps_title.lo sapi/cli/php_cli_process_title.lo
+PHP_EXECUTABLE = $(top_builddir)/$(SAPI_CLI_PATH)
+SAPI_CLI_PATH = sapi/cli/php
+BUILD_CLI = $(CC) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(EXTRA_LDFLAGS_PROGRAM) $(LDFLAGS) $(NATIVE_RPATHS) $(PHP_GLOBAL_OBJS:.lo=.o) $(PHP_BINARY_OBJS:.lo=.o) $(PHP_CLI_OBJS:.lo=.o) $(PHP_FRAMEWORKS) $(EXTRA_LIBS) $(ZEND_EXTRA_LIBS) -o $(SAPI_CLI_PATH)
+PHP_PHPDBG_OBJS = sapi/phpdbg/phpdbg.lo sapi/phpdbg/phpdbg_parser.lo sapi/phpdbg/phpdbg_lexer.lo sapi/phpdbg/phpdbg_prompt.lo sapi/phpdbg/phpdbg_help.lo sapi/phpdbg/phpdbg_break.lo sapi/phpdbg/phpdbg_print.lo sapi/phpdbg/phpdbg_bp.lo sapi/phpdbg/phpdbg_list.lo sapi/phpdbg/phpdbg_utils.lo sapi/phpdbg/phpdbg_info.lo sapi/phpdbg/phpdbg_cmd.lo sapi/phpdbg/phpdbg_set.lo sapi/phpdbg/phpdbg_frame.lo sapi/phpdbg/phpdbg_watch.lo sapi/phpdbg/phpdbg_btree.lo sapi/phpdbg/phpdbg_sigsafe.lo sapi/phpdbg/phpdbg_io.lo sapi/phpdbg/phpdbg_out.lo
+PHPDBG_EXTRA_LIBS =
+BUILD_BINARY = sapi/phpdbg/phpdbg
+BUILD_SHARED = sapi/phpdbg/libphpdbg.la
+BUILD_PHPDBG = $(LIBTOOL) --tag=CC --mode=link $(CC) -export-dynamic $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(EXTRA_LDFLAGS_PROGRAM) $(LDFLAGS) $(PHP_RPATHS) $(PHP_GLOBAL_OBJS:.lo=.o) $(PHP_BINARY_OBJS:.lo=.o) $(PHP_PHPDBG_OBJS:.lo=.o) $(EXTRA_LIBS) $(PHPDBG_EXTRA_LIBS) $(ZEND_EXTRA_LIBS) $(PHP_FRAMEWORKS) -o $(BUILD_BINARY)
+BUILD_PHPDBG_SHARED = $(LIBTOOL) --tag=CC --mode=link $(CC) -shared -Wl,-soname,libphpdbg.so -export-dynamic $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(EXTRA_LDFLAGS_PROGRAM) $(LDFLAGS) $(PHP_RPATHS) $(PHP_GLOBAL_OBJS) $(PHP_BINARY_OBJS) $(PHP_PHPDBG_OBJS) $(EXTRA_LIBS) $(PHPDBG_EXTRA_LIBS) $(ZEND_EXTRA_LIBS) -o $(BUILD_SHARED)
+PHP_CGI_OBJS = sapi/cgi/cgi_main.lo
+SAPI_CGI_PATH = sapi/cgi/php-cgi
+BUILD_CGI = $(CC) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(EXTRA_LDFLAGS_PROGRAM) $(LDFLAGS) $(NATIVE_RPATHS) $(PHP_GLOBAL_OBJS:.lo=.o) $(PHP_BINARY_OBJS:.lo=.o) $(PHP_FASTCGI_OBJS:.lo=.o) $(PHP_CGI_OBJS:.lo=.o) $(PHP_FRAMEWORKS) $(EXTRA_LIBS) $(ZEND_EXTRA_LIBS) -o $(SAPI_CGI_PATH)
+PHP_FASTCGI_OBJS = main/fastcgi.lo
+PHP_SAPI_OBJS = main/internal_functions.lo
+PHP_BINARY_OBJS = main/internal_functions_cli.lo
+PHP_GLOBAL_OBJS = Zend/asm/make_combined_sysv_macho_gas.lo Zend/asm/jump_combined_sysv_macho_gas.lo TSRM/TSRM.lo main/main.lo main/snprintf.lo main/spprintf.lo main/fopen_wrappers.lo main/php_scandir.lo main/php_ini_builder.lo main/php_ini.lo main/SAPI.lo main/rfc1867.lo main/php_content_types.lo main/strlcpy.lo main/strlcat.lo main/explicit_bzero.lo main/reentrancy.lo main/php_variables.lo main/php_ticks.lo main/network.lo main/php_open_temporary_file.lo main/php_odbc_utils.lo main/safe_bcmp.lo main/output.lo main/getopt.lo main/php_syslog.lo main/streams/streams.lo main/streams/cast.lo main/streams/memory.lo main/streams/filter.lo main/streams/plain_wrapper.lo main/streams/userspace.lo main/streams/transports.lo main/streams/xp_socket.lo main/streams/mmap.lo main/streams/glob_wrapper.lo Zend/Optimizer/block_pass.lo Zend/Optimizer/compact_literals.lo Zend/Optimizer/compact_vars.lo Zend/Optimizer/dce.lo Zend/Optimizer/dfa_pass.lo Zend/Optimizer/escape_analysis.lo Zend/Optimizer/nop_removal.lo Zend/Optimizer/optimize_func_calls.lo Zend/Optimizer/optimize_temp_vars_5.lo Zend/Optimizer/pass1.lo Zend/Optimizer/pass3.lo Zend/Optimizer/sccp.lo Zend/Optimizer/scdf.lo Zend/Optimizer/zend_call_graph.lo Zend/Optimizer/zend_cfg.lo Zend/Optimizer/zend_dfg.lo Zend/Optimizer/zend_dump.lo Zend/Optimizer/zend_func_info.lo Zend/Optimizer/zend_inference.lo Zend/Optimizer/zend_optimizer.lo Zend/Optimizer/zend_ssa.lo Zend/zend_alloc.lo Zend/zend_API.lo Zend/zend_ast.lo Zend/zend_atomic.lo Zend/zend_attributes.lo Zend/zend_builtin_functions.lo Zend/zend_call_stack.lo Zend/zend_closures.lo Zend/zend_compile.lo Zend/llvm_wrapper.lo Zend/zend_constants.lo Zend/zend_cpuinfo.lo Zend/zend_default_classes.lo Zend/zend_dtrace.lo Zend/zend_enum.lo Zend/zend_exceptions.lo Zend/zend_execute_API.lo Zend/zend_execute.lo Zend/zend_extensions.lo Zend/zend_fibers.lo Zend/zend_float.lo Zend/zend_frameless_function.lo Zend/zend_gc.lo Zend/zend_gdb.lo Zend/zend_generators.lo Zend/zend_hash.lo Zend/zend_highlight.lo Zend/zend_hrtime.lo Zend/zend_inheritance.lo Zend/zend_ini_parser.lo Zend/zend_ini_scanner.lo Zend/zend_ini.lo Zend/zend_interfaces.lo Zend/zend_iterators.lo Zend/zend_language_parser.lo Zend/zend_language_scanner.lo Zend/zend_list.lo Zend/zend_llist.lo Zend/zend_max_execution_timer.lo Zend/zend_multibyte.lo Zend/zend_object_handlers.lo Zend/zend_objects_API.lo Zend/zend_objects.lo Zend/zend_observer.lo Zend/zend_opcode.lo Zend/zend_operators.lo Zend/zend_property_hooks.lo Zend/zend_ptr_stack.lo Zend/zend_signal.lo Zend/zend_smart_str.lo Zend/zend_sort.lo Zend/zend_stack.lo Zend/zend_stream.lo Zend/zend_string.lo Zend/zend_strtod.lo Zend/zend_system_id.lo Zend/zend_variables.lo Zend/zend_virtual_cwd.lo Zend/zend_vm_opcodes.lo Zend/zend_weakrefs.lo Zend/zend.lo
+PHP_BINARIES = cli phpdbg cgi
+PHP_MODULES =
+PHP_ZEND_EX =
+bindir = ${exec_prefix}/bin
+sbindir = ${exec_prefix}/sbin
+exec_prefix = ${prefix}
+program_prefix =
+program_suffix =
+includedir = ${prefix}/include
+orig_libdir = ${exec_prefix}/lib
+libdir = ${exec_prefix}/lib/php
+mandir = ${datarootdir}/man
+phptempdir = /Users/alfiankan/CLionProjects/php-src/libs
+prefix = /usr/local
+localstatedir = ${prefix}/var
+datadir = ${datarootdir}/php
+datarootdir = /usr/local/php
+sysconfdir = ${prefix}/etc
+EXEEXT =
+CC = cc
+BUILD_CC = cc
+CFLAGS = $(CFLAGS_CLEAN) -prefer-non-pic -static
+CFLAGS_CLEAN = -fno-common -Wstrict-prototypes -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -g -O2 -ffp-contract=off -fvisibility=hidden -O0 -DZEND_SIGNALS $(PROF_FLAGS)
+CPP = cc -E
+CPPFLAGS = -I/opt/homebrew/opt/ruby@3.0/include -D_GNU_SOURCE
+CXX =
+CXXFLAGS = -g -O0 -prefer-non-pic -static $(PROF_FLAGS)
+CXXFLAGS_CLEAN = -g -O0
+EXTENSION_DIR = /usr/local/lib/php/extensions/debug-non-zts-20230901
+EXTRA_LDFLAGS = -L/opt/homebrew/opt/ruby@3.0/lib
+EXTRA_LDFLAGS_PROGRAM = -L/opt/homebrew/opt/ruby@3.0/lib
+EXTRA_LIBS =
+ZEND_EXTRA_LIBS =
+INCLUDES = -I/Users/alfiankan/CLionProjects/php-src/main -I/Users/alfiankan/CLionProjects/php-src -I/Users/alfiankan/CLionProjects/php-src/TSRM -I/Users/alfiankan/CLionProjects/php-src/Zend
+EXTRA_INCLUDES =
+INSTALL_IT =
+LIBTOOL = $(SHELL) $(top_builddir)/libtool --silent --preserve-dup-deps
+LN_S = ln -s
+NATIVE_RPATHS =
+OVERALL_TARGET =
+PHP_RPATHS =
+PHP_SAPI = none
+SHELL = /bin/sh
+PHP_FRAMEWORKS =
+PHP_FRAMEWORKPATH =
+INSTALL_HEADERS = sapi/cli/cli.h Zend/ TSRM/ main/ main/streams/ Zend/Optimizer/zend_call_graph.h Zend/Optimizer/zend_cfg.h Zend/Optimizer/zend_dfg.h Zend/Optimizer/zend_dump.h Zend/Optimizer/zend_func_info.h Zend/Optimizer/zend_inference.h Zend/Optimizer/zend_optimizer.h Zend/Optimizer/zend_ssa.h Zend/Optimizer/zend_worklist.h
+all_targets = $(OVERALL_TARGET) $(PHP_MODULES) $(PHP_ZEND_EX) $(PHP_BINARIES) pharcmd
+install_targets = install-binaries install-build install-headers install-programs install-pharcmd
+install_binary_targets = install-cli install-phpdbg install-cgi
+phplibdir = /Users/alfiankan/CLionProjects/php-src/modules
+mkinstalldirs = $(top_srcdir)/build/shtool mkdir -p
+INSTALL = $(top_srcdir)/build/shtool install -c
+INSTALL_DATA = $(INSTALL) -m 644
+
+COMMON_FLAGS = $(INCLUDES) $(EXTRA_INCLUDES) $(CPPFLAGS) $(PHP_FRAMEWORKPATH)
+
+all: $(all_targets)
+	@echo
+	@echo "Build complete."
+	@echo "Don't forget to run 'make test'."
+	@echo
+
+build-modules: $(PHP_MODULES) $(PHP_ZEND_EX)
+
+build-binaries: $(PHP_BINARIES)
+
+libphp.la: $(PHP_GLOBAL_OBJS) $(PHP_SAPI_OBJS)
+	$(LIBTOOL) --tag=CC --mode=link $(CC) $(LIBPHP_CFLAGS) $(CFLAGS) $(EXTRA_CFLAGS) -rpath $(phptempdir) $(EXTRA_LDFLAGS) $(LDFLAGS) $(PHP_RPATHS) $(PHP_GLOBAL_OBJS) $(PHP_SAPI_OBJS) $(EXTRA_LIBS) $(ZEND_EXTRA_LIBS) -o $@
+	-@$(LIBTOOL) --tag=CC --mode=install cp $@ $(phptempdir)/$@ >/dev/null 2>&1
+
+libs/libphp.bundle: $(PHP_GLOBAL_OBJS) $(PHP_SAPI_OBJS)
+	$(CC) $(MH_BUNDLE_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) $(EXTRA_LDFLAGS) $(PHP_GLOBAL_OBJS:.lo=.o) $(PHP_SAPI_OBJS:.lo=.o) $(PHP_FRAMEWORKS) $(EXTRA_LIBS) $(ZEND_EXTRA_LIBS) -o $@ && cp $@ libs/libphp.so
+
+install: $(all_targets) $(install_targets)
+
+install-sapi: $(OVERALL_TARGET)
+	@echo "Installing PHP SAPI module:       $(PHP_SAPI)"
+	-@$(mkinstalldirs) $(INSTALL_ROOT)$(bindir)
+	-@if test ! -r $(phptempdir)/libphp.$(SHLIB_DL_SUFFIX_NAME); then \
+		for i in 0.0.0 0.0 0; do \
+			if test -r $(phptempdir)/libphp.$(SHLIB_DL_SUFFIX_NAME).$$i; then \
+				$(LN_S) $(phptempdir)/libphp.$(SHLIB_DL_SUFFIX_NAME).$$i $(phptempdir)/libphp.$(SHLIB_DL_SUFFIX_NAME); \
+				break; \
+			fi; \
+		done; \
+	fi
+	@$(INSTALL_IT)
+
+install-binaries: build-binaries $(install_binary_targets)
+
+install-modules: build-modules
+	@test -d modules && \
+	$(mkinstalldirs) $(INSTALL_ROOT)$(EXTENSION_DIR)
+	@echo "Installing shared extensions:     $(INSTALL_ROOT)$(EXTENSION_DIR)/"
+	@rm -f modules/*.la >/dev/null 2>&1
+	@$(INSTALL) modules/* $(INSTALL_ROOT)$(EXTENSION_DIR)
+
+install-headers:
+	-@if test "$(INSTALL_HEADERS)"; then \
+		for i in `echo $(INSTALL_HEADERS)`; do \
+			i=`$(top_srcdir)/build/shtool path -d $$i`; \
+			paths="$$paths $(INSTALL_ROOT)$(phpincludedir)/$$i"; \
+		done; \
+		$(mkinstalldirs) $$paths && \
+		echo "Installing header files:          $(INSTALL_ROOT)$(phpincludedir)/" && \
+		for i in `echo $(INSTALL_HEADERS)`; do \
+			if test "$(PHP_PECL_EXTENSION)"; then \
+				src=`echo $$i | $(SED) -e "s#ext/$(PHP_PECL_EXTENSION)/##g"`; \
+			else \
+				src=$$i; \
+			fi; \
+			if test -f "$(top_srcdir)/$$src"; then \
+				$(INSTALL_DATA) $(top_srcdir)/$$src $(INSTALL_ROOT)$(phpincludedir)/$$i; \
+			elif test -f "$(top_builddir)/$$src"; then \
+				$(INSTALL_DATA) $(top_builddir)/$$src $(INSTALL_ROOT)$(phpincludedir)/$$i; \
+			else \
+				(cd $(top_srcdir)/$$src && $(INSTALL_DATA) *.h $(INSTALL_ROOT)$(phpincludedir)/$$i; \
+				cd $(top_builddir)/$$src && $(INSTALL_DATA) *.h $(INSTALL_ROOT)$(phpincludedir)/$$i) 2>/dev/null || true; \
+			fi \
+		done; \
+	fi
+
+PHP_TEST_SETTINGS = -d 'open_basedir=' -d 'output_buffering=0' -d 'memory_limit=-1'
+PHP_TEST_SHARED_EXTENSIONS =  ` \
+	if test "x$(PHP_MODULES)" != "x"; then \
+		for i in $(PHP_MODULES)""; do \
+			. $$i; \
+			if test "x$$dlname" != "xdl_test.so"; then \
+				$(top_srcdir)/build/shtool echo -n -- " -d extension=$$dlname"; \
+			fi; \
+		done; \
+	fi; \
+	if test "x$(PHP_ZEND_EX)" != "x"; then \
+		for i in $(PHP_ZEND_EX)""; do \
+			. $$i; $(top_srcdir)/build/shtool echo -n -- " -d zend_extension=$(top_builddir)/modules/$$dlname"; \
+		done; \
+	fi`
+PHP_DEPRECATED_DIRECTIVES_REGEX = '^(magic_quotes_(gpc|runtime|sybase)?|(zend_)?extension(_debug)?(_ts)?)[\t\ ]*='
+
+test: all
+	@if test ! -z "$(PHP_EXECUTABLE)" && test -x "$(PHP_EXECUTABLE)"; then \
+		INI_FILE=`$(PHP_EXECUTABLE) -d 'display_errors=stderr' -r 'echo php_ini_loaded_file();' 2> /dev/null`; \
+		if test "$$INI_FILE"; then \
+			$(EGREP) -h -v $(PHP_DEPRECATED_DIRECTIVES_REGEX) "$$INI_FILE" > $(top_builddir)/tmp-php.ini; \
+		else \
+			echo > $(top_builddir)/tmp-php.ini; \
+		fi; \
+		INI_SCANNED_PATH=`$(PHP_EXECUTABLE) -d 'display_errors=stderr' -r '$$a = explode(",\n", trim(php_ini_scanned_files())); echo $$a[0];' 2> /dev/null`; \
+		if test "$$INI_SCANNED_PATH"; then \
+			INI_SCANNED_PATH=`$(top_srcdir)/build/shtool path -d $$INI_SCANNED_PATH`; \
+			$(EGREP) -h -v $(PHP_DEPRECATED_DIRECTIVES_REGEX) "$$INI_SCANNED_PATH"/*.ini >> $(top_builddir)/tmp-php.ini; \
+		fi; \
+		TEST_PHP_EXECUTABLE=$(PHP_EXECUTABLE) \
+		TEST_PHP_SRCDIR=$(top_srcdir) \
+		CC="$(CC)" \
+			$(PHP_EXECUTABLE) -n -c $(top_builddir)/tmp-php.ini $(PHP_TEST_SETTINGS) $(top_srcdir)/run-tests.php -n -c $(top_builddir)/tmp-php.ini -d extension_dir=$(top_builddir)/modules/ $(PHP_TEST_SHARED_EXTENSIONS) $(TESTS); \
+		TEST_RESULT_EXIT_CODE=$$?; \
+		rm $(top_builddir)/tmp-php.ini; \
+		exit $$TEST_RESULT_EXIT_CODE; \
+	else \
+		echo "ERROR: Cannot run tests without CLI sapi."; \
+	fi
+
+clean:
+	find . -name \*.gcno -o -name \*.gcda | xargs rm -f
+	find . -name \*.lo -o -name \*.o -o -name \*.dep | xargs rm -f
+	find . -name \*.la -o -name \*.a | xargs rm -f
+	find . -name \*.so | xargs rm -f
+	find . -name .libs -a -type d|xargs rm -rf
+	rm -f libphp.la $(SAPI_CLI_PATH) $(SAPI_CGI_PATH) $(SAPI_LITESPEED_PATH) $(SAPI_FPM_PATH) $(OVERALL_TARGET) modules/* libs/*
+	rm -f ext/opcache/jit/ir/gen_ir_fold_hash
+	rm -f ext/opcache/jit/ir/minilua
+	rm -f ext/opcache/jit/ir/ir_fold_hash.h
+	rm -f ext/opcache/jit/ir/ir_emit_x86.h
+	rm -f ext/opcache/jit/ir/ir_emit_aarch64.h
+
+distclean: clean
+	rm -f Makefile config.cache config.log config.status Makefile.objects Makefile.fragments libtool main/php_config.h main/internal_functions_cli.c main/internal_functions.c Zend/zend_dtrace_gen.h Zend/zend_dtrace_gen.h.bak Zend/zend_config.h
+	rm -f main/build-defs.h scripts/phpize
+	rm -f ext/date/lib/timelib_config.h ext/mbstring/libmbfl/config.h
+	rm -f scripts/man1/phpize.1 scripts/php-config scripts/man1/php-config.1 sapi/cli/php.1 sapi/cgi/php-cgi.1 sapi/phpdbg/phpdbg.1 ext/phar/phar.1 ext/phar/phar.phar.1
+	rm -f sapi/fpm/php-fpm.conf sapi/fpm/init.d.php-fpm sapi/fpm/php-fpm.service sapi/fpm/php-fpm.8 sapi/fpm/status.html
+	rm -f ext/phar/phar.phar ext/phar/phar.php
+	if test "$(srcdir)" != "$(builddir)"; then \
+	  rm -f ext/phar/phar/phar.inc; \
+	fi
+
+prof-gen:
+	CCACHE_DISABLE=1 $(MAKE) PROF_FLAGS=-fprofile-generate all
+	find . -name \*.gcda | xargs rm -f
+
+prof-clean:
+	find . -name \*.lo -o -name \*.o | xargs rm -f
+	find . -name \*.la -o -name \*.a | xargs rm -f
+	find . -name \*.so | xargs rm -f
+	rm -f libphp.la $(SAPI_CLI_PATH) $(SAPI_CGI_PATH) $(SAPI_LITESPEED_PATH) $(SAPI_FPM_PATH) $(OVERALL_TARGET) modules/* libs/*
+
+prof-use:
+	CCACHE_DISABLE=1 $(MAKE) PROF_FLAGS=-fprofile-use all
+
+%_arginfo.h: %.stub.php
+	@if test -e "$(top_srcdir)/build/gen_stub.php"; then \
+		if test ! -z "$(PHP)"; then \
+			echo Parse $< to generate $@;\
+			$(PHP) $(top_srcdir)/build/gen_stub.php $<; \
+		elif test ! -z "$(PHP_EXECUTABLE)" && test -x "$(PHP_EXECUTABLE)"; then \
+			echo Parse $< to generate $@;\
+			$(PHP_EXECUTABLE) $(top_srcdir)/build/gen_stub.php $<; \
+		fi; \
+	fi;
+
+.PHONY: all clean install distclean test prof-gen prof-clean prof-use
+cli: $(SAPI_CLI_PATH)
+
+$(SAPI_CLI_PATH): $(PHP_GLOBAL_OBJS) $(PHP_BINARY_OBJS) $(PHP_CLI_OBJS)
+	$(BUILD_CLI)
+
+install-cli: $(SAPI_CLI_PATH)
+	@echo "Installing PHP CLI binary:        $(INSTALL_ROOT)$(bindir)/"
+	@$(mkinstalldirs) $(INSTALL_ROOT)$(bindir)
+	@$(INSTALL) -m 0755 $(SAPI_CLI_PATH) $(INSTALL_ROOT)$(bindir)/$(program_prefix)php$(program_suffix)$(EXEEXT)
+	@echo "Installing PHP CLI man page:      $(INSTALL_ROOT)$(mandir)/man1/"
+	@$(mkinstalldirs) $(INSTALL_ROOT)$(mandir)/man1
+	@$(INSTALL_DATA) sapi/cli/php.1 $(INSTALL_ROOT)$(mandir)/man1/$(program_prefix)php$(program_suffix).1
+phpdbg: $(BUILD_BINARY)
+
+phpdbg-shared: $(BUILD_SHARED)
+
+$(BUILD_SHARED): $(PHP_GLOBAL_OBJS) $(PHP_BINARY_OBJS) $(PHP_PHPDBG_OBJS)
+	$(BUILD_PHPDBG_SHARED)
+
+$(BUILD_BINARY): $(PHP_GLOBAL_OBJS) $(PHP_BINARY_OBJS) $(PHP_PHPDBG_OBJS)
+	$(BUILD_PHPDBG)
+
+%.c: %.y
+%.c: %.l
+
+/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_lexer.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_parser.h
+
+/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_lexer.c: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_lexer.l
+	@(cd $(top_srcdir); $(RE2C) $(RE2C_FLAGS) -cbdFo sapi/phpdbg/phpdbg_lexer.c sapi/phpdbg/phpdbg_lexer.l)
+
+/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_parser.h: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_parser.c
+/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_parser.c: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_parser.y
+	@$(YACC) $(YFLAGS) -v -d /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_parser.y -o $@
+
+install-phpdbg: $(BUILD_BINARY)
+	@echo "Installing phpdbg binary:         $(INSTALL_ROOT)$(bindir)/"
+	@$(mkinstalldirs) $(INSTALL_ROOT)$(bindir)
+	@$(mkinstalldirs) $(INSTALL_ROOT)$(localstatedir)/log
+	@$(mkinstalldirs) $(INSTALL_ROOT)$(localstatedir)/run
+	@$(INSTALL) -m 0755 $(BUILD_BINARY) $(INSTALL_ROOT)$(bindir)/$(program_prefix)phpdbg$(program_suffix)$(EXEEXT)
+	@echo "Installing phpdbg man page:       $(INSTALL_ROOT)$(mandir)/man1/"
+	@$(mkinstalldirs) $(INSTALL_ROOT)$(mandir)/man1
+	@$(INSTALL_DATA) sapi/phpdbg/phpdbg.1 $(INSTALL_ROOT)$(mandir)/man1/$(program_prefix)phpdbg$(program_suffix).1
+cgi: $(SAPI_CGI_PATH)
+
+$(SAPI_CGI_PATH): $(PHP_GLOBAL_OBJS) $(PHP_BINARY_OBJS) $(PHP_FASTCGI_OBJS) $(PHP_CGI_OBJS)
+	$(BUILD_CGI)
+
+install-cgi: $(SAPI_CGI_PATH)
+	@echo "Installing PHP CGI binary:        $(INSTALL_ROOT)$(bindir)/"
+	@$(mkinstalldirs) $(INSTALL_ROOT)$(bindir)
+	@$(INSTALL) -m 0755 $(SAPI_CGI_PATH) $(INSTALL_ROOT)$(bindir)/$(program_prefix)php-cgi$(program_suffix)$(EXEEXT)
+	@echo "Installing PHP CGI man page:      $(INSTALL_ROOT)$(mandir)/man1/"
+	@$(mkinstalldirs) $(INSTALL_ROOT)$(mandir)/man1
+	@$(INSTALL_DATA) sapi/cgi/php-cgi.1 $(INSTALL_ROOT)$(mandir)/man1/$(program_prefix)php-cgi$(program_suffix).1
+#
+# Build environment install
+#
+
+phpincludedir = $(includedir)/php
+phpbuilddir = $(libdir)/build
+
+BUILD_FILES = \
+	scripts/phpize.m4 \
+	build/libtool.m4 \
+	build/ltmain.sh \
+	build/ax_check_compile_flag.m4 \
+	build/ax_gcc_func_attribute.m4 \
+	build/php_cxx_compile_stdcxx.m4 \
+	build/pkg.m4 \
+	build/Makefile.global \
+	build/php.m4 \
+	build/gen_stub.php \
+	run-tests.php
+
+BUILD_FILES_EXEC = \
+	build/shtool \
+	build/config.guess \
+	build/config.sub
+
+bin_SCRIPTS = phpize php-config
+man_PAGES = phpize php-config
+
+install-build:
+	@echo "Installing build environment:     $(INSTALL_ROOT)$(phpbuilddir)/"
+	@$(mkinstalldirs) $(INSTALL_ROOT)$(phpbuilddir) $(INSTALL_ROOT)$(bindir) && \
+	(cd $(top_srcdir) && \
+	$(INSTALL) $(BUILD_FILES_EXEC) $(INSTALL_ROOT)$(phpbuilddir) && \
+	$(INSTALL_DATA) $(BUILD_FILES) $(INSTALL_ROOT)$(phpbuilddir))
+
+install-programs: scripts/phpize scripts/php-config
+	@echo "Installing helper programs:       $(INSTALL_ROOT)$(bindir)/"
+	@$(mkinstalldirs) $(INSTALL_ROOT)$(bindir)
+	@for prog in $(bin_SCRIPTS); do \
+		echo "  program: $(program_prefix)$${prog}$(program_suffix)"; \
+		$(INSTALL) -m 755 scripts/$${prog} $(INSTALL_ROOT)$(bindir)/$(program_prefix)$${prog}$(program_suffix); \
+	done
+	@echo "Installing man pages:             $(INSTALL_ROOT)$(mandir)/man1/"
+	@$(mkinstalldirs) $(INSTALL_ROOT)$(mandir)/man1
+	@for page in $(man_PAGES); do \
+		echo "  page: $(program_prefix)$${page}$(program_suffix).1"; \
+		$(INSTALL_DATA) scripts/man1/$${page}.1 $(INSTALL_ROOT)$(mandir)/man1/$(program_prefix)$${page}$(program_suffix).1; \
+	done
+
+scripts/phpize: /Users/alfiankan/CLionProjects/php-src/scripts/phpize.in $(top_builddir)/config.status
+	(CONFIG_FILES=$@ CONFIG_HEADERS= $(top_builddir)/config.status)
+
+scripts/php-config: /Users/alfiankan/CLionProjects/php-src/scripts/php-config.in $(top_builddir)/config.status
+	(CONFIG_FILES=$@ CONFIG_HEADERS= $(top_builddir)/config.status)
+#
+# Zend
+#
+
+Zend/zend_language_scanner.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_parser.h
+Zend/zend_ini_scanner.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_ini_parser.h
+
+/Users/alfiankan/CLionProjects/php-src/Zend/zend_language_scanner.c /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_scanner_defs.h: /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_scanner.l
+	@(cd $(top_srcdir); $(RE2C) $(RE2C_FLAGS) --case-inverted -cbdFt Zend/zend_language_scanner_defs.h -oZend/zend_language_scanner.c Zend/zend_language_scanner.l)
+
+/Users/alfiankan/CLionProjects/php-src/Zend/zend_language_parser.h: /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_parser.c
+/Users/alfiankan/CLionProjects/php-src/Zend/zend_language_parser.c: /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_parser.y
+# Tweak zendparse to be exported through ZEND_API. This has to be revisited once
+# bison supports foreign skeletons and that bison version is used. Read
+# https://git.savannah.gnu.org/cgit/bison.git/tree/data/README.md for more.
+	@$(YACC) $(YFLAGS) -v -d /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_parser.y -o $@
+	@$(SED) -e 's,^int zendparse\(.*\),ZEND_API int zendparse\1,g' < $@ \
+	> $@.tmp && \
+	mv $@.tmp $@
+	@$(SED) -e 's,^int zendparse\(.*\),ZEND_API int zendparse\1,g' < /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_parser.h \
+	> /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_parser.h.tmp && \
+	mv /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_parser.h.tmp /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_parser.h
+
+/Users/alfiankan/CLionProjects/php-src/Zend/zend_ini_parser.h: /Users/alfiankan/CLionProjects/php-src/Zend/zend_ini_parser.c
+/Users/alfiankan/CLionProjects/php-src/Zend/zend_ini_parser.c: /Users/alfiankan/CLionProjects/php-src/Zend/zend_ini_parser.y
+	@$(YACC) $(YFLAGS) -v -d /Users/alfiankan/CLionProjects/php-src/Zend/zend_ini_parser.y -o $@
+
+/Users/alfiankan/CLionProjects/php-src/Zend/zend_ini_scanner.c: /Users/alfiankan/CLionProjects/php-src/Zend/zend_ini_scanner.l
+	@(cd $(top_srcdir); $(RE2C) $(RE2C_FLAGS) --case-inverted -cbdFt Zend/zend_ini_scanner_defs.h -oZend/zend_ini_scanner.c Zend/zend_ini_scanner.l)
+
+# Use an intermediate target to indicate that zend_vm_gen.php produces both files
+# at the same time, rather than the same recipe applying for two different targets.
+# The "grouped targets" feature, which would solve this directly, is only available
+# since GNU Make 4.3.
+/Users/alfiankan/CLionProjects/php-src/Zend/zend_vm_execute.h /Users/alfiankan/CLionProjects/php-src/Zend/zend_vm_opcodes.c: vm.gen.intermediate ;
+.INTERMEDIATE: vm.gen.intermediate
+vm.gen.intermediate: /Users/alfiankan/CLionProjects/php-src/Zend/zend_vm_def.h /Users/alfiankan/CLionProjects/php-src/Zend/zend_vm_execute.skl /Users/alfiankan/CLionProjects/php-src/Zend/zend_vm_gen.php
+	@if test ! -z "$(PHP)"; then \
+		$(PHP) /Users/alfiankan/CLionProjects/php-src/Zend/zend_vm_gen.php; \
+	fi;
+
+Zend/zend_highlight.lo Zend/zend_compile.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_parser.h
+
+Zend/zend_execute.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_vm_execute.h /Users/alfiankan/CLionProjects/php-src/Zend/zend_vm_opcodes.h
+-include sapi/cli/php_cli.dep
+sapi/cli/php_cli.lo: /Users/alfiankan/CLionProjects/php-src/sapi/cli/php_cli.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/cli/ -I/Users/alfiankan/CLionProjects/php-src/sapi/cli/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/cli/php_cli.c -o sapi/cli/php_cli.lo  -MMD -MF sapi/cli/php_cli.dep -MT sapi/cli/php_cli.lo
+-include sapi/cli/php_http_parser.dep
+sapi/cli/php_http_parser.lo: /Users/alfiankan/CLionProjects/php-src/sapi/cli/php_http_parser.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/cli/ -I/Users/alfiankan/CLionProjects/php-src/sapi/cli/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/cli/php_http_parser.c -o sapi/cli/php_http_parser.lo  -MMD -MF sapi/cli/php_http_parser.dep -MT sapi/cli/php_http_parser.lo
+-include sapi/cli/php_cli_server.dep
+sapi/cli/php_cli_server.lo: /Users/alfiankan/CLionProjects/php-src/sapi/cli/php_cli_server.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/cli/ -I/Users/alfiankan/CLionProjects/php-src/sapi/cli/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/cli/php_cli_server.c -o sapi/cli/php_cli_server.lo  -MMD -MF sapi/cli/php_cli_server.dep -MT sapi/cli/php_cli_server.lo
+-include sapi/cli/ps_title.dep
+sapi/cli/ps_title.lo: /Users/alfiankan/CLionProjects/php-src/sapi/cli/ps_title.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/cli/ -I/Users/alfiankan/CLionProjects/php-src/sapi/cli/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/cli/ps_title.c -o sapi/cli/ps_title.lo  -MMD -MF sapi/cli/ps_title.dep -MT sapi/cli/ps_title.lo
+-include sapi/cli/php_cli_process_title.dep
+sapi/cli/php_cli_process_title.lo: /Users/alfiankan/CLionProjects/php-src/sapi/cli/php_cli_process_title.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/cli/ -I/Users/alfiankan/CLionProjects/php-src/sapi/cli/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/cli/php_cli_process_title.c -o sapi/cli/php_cli_process_title.lo  -MMD -MF sapi/cli/php_cli_process_title.dep -MT sapi/cli/php_cli_process_title.lo
+-include sapi/phpdbg/phpdbg.dep
+sapi/phpdbg/phpdbg.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg.c -o sapi/phpdbg/phpdbg.lo  -MMD -MF sapi/phpdbg/phpdbg.dep -MT sapi/phpdbg/phpdbg.lo
+-include sapi/phpdbg/phpdbg_parser.dep
+sapi/phpdbg/phpdbg_parser.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_parser.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_parser.c -o sapi/phpdbg/phpdbg_parser.lo  -MMD -MF sapi/phpdbg/phpdbg_parser.dep -MT sapi/phpdbg/phpdbg_parser.lo
+-include sapi/phpdbg/phpdbg_lexer.dep
+sapi/phpdbg/phpdbg_lexer.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_lexer.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_lexer.c -o sapi/phpdbg/phpdbg_lexer.lo  -MMD -MF sapi/phpdbg/phpdbg_lexer.dep -MT sapi/phpdbg/phpdbg_lexer.lo
+-include sapi/phpdbg/phpdbg_prompt.dep
+sapi/phpdbg/phpdbg_prompt.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_prompt.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_prompt.c -o sapi/phpdbg/phpdbg_prompt.lo  -MMD -MF sapi/phpdbg/phpdbg_prompt.dep -MT sapi/phpdbg/phpdbg_prompt.lo
+-include sapi/phpdbg/phpdbg_help.dep
+sapi/phpdbg/phpdbg_help.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_help.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_help.c -o sapi/phpdbg/phpdbg_help.lo  -MMD -MF sapi/phpdbg/phpdbg_help.dep -MT sapi/phpdbg/phpdbg_help.lo
+-include sapi/phpdbg/phpdbg_break.dep
+sapi/phpdbg/phpdbg_break.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_break.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_break.c -o sapi/phpdbg/phpdbg_break.lo  -MMD -MF sapi/phpdbg/phpdbg_break.dep -MT sapi/phpdbg/phpdbg_break.lo
+-include sapi/phpdbg/phpdbg_print.dep
+sapi/phpdbg/phpdbg_print.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_print.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_print.c -o sapi/phpdbg/phpdbg_print.lo  -MMD -MF sapi/phpdbg/phpdbg_print.dep -MT sapi/phpdbg/phpdbg_print.lo
+-include sapi/phpdbg/phpdbg_bp.dep
+sapi/phpdbg/phpdbg_bp.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_bp.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_bp.c -o sapi/phpdbg/phpdbg_bp.lo  -MMD -MF sapi/phpdbg/phpdbg_bp.dep -MT sapi/phpdbg/phpdbg_bp.lo
+-include sapi/phpdbg/phpdbg_list.dep
+sapi/phpdbg/phpdbg_list.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_list.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_list.c -o sapi/phpdbg/phpdbg_list.lo  -MMD -MF sapi/phpdbg/phpdbg_list.dep -MT sapi/phpdbg/phpdbg_list.lo
+-include sapi/phpdbg/phpdbg_utils.dep
+sapi/phpdbg/phpdbg_utils.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_utils.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_utils.c -o sapi/phpdbg/phpdbg_utils.lo  -MMD -MF sapi/phpdbg/phpdbg_utils.dep -MT sapi/phpdbg/phpdbg_utils.lo
+-include sapi/phpdbg/phpdbg_info.dep
+sapi/phpdbg/phpdbg_info.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_info.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_info.c -o sapi/phpdbg/phpdbg_info.lo  -MMD -MF sapi/phpdbg/phpdbg_info.dep -MT sapi/phpdbg/phpdbg_info.lo
+-include sapi/phpdbg/phpdbg_cmd.dep
+sapi/phpdbg/phpdbg_cmd.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_cmd.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_cmd.c -o sapi/phpdbg/phpdbg_cmd.lo  -MMD -MF sapi/phpdbg/phpdbg_cmd.dep -MT sapi/phpdbg/phpdbg_cmd.lo
+-include sapi/phpdbg/phpdbg_set.dep
+sapi/phpdbg/phpdbg_set.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_set.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_set.c -o sapi/phpdbg/phpdbg_set.lo  -MMD -MF sapi/phpdbg/phpdbg_set.dep -MT sapi/phpdbg/phpdbg_set.lo
+-include sapi/phpdbg/phpdbg_frame.dep
+sapi/phpdbg/phpdbg_frame.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_frame.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_frame.c -o sapi/phpdbg/phpdbg_frame.lo  -MMD -MF sapi/phpdbg/phpdbg_frame.dep -MT sapi/phpdbg/phpdbg_frame.lo
+-include sapi/phpdbg/phpdbg_watch.dep
+sapi/phpdbg/phpdbg_watch.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_watch.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_watch.c -o sapi/phpdbg/phpdbg_watch.lo  -MMD -MF sapi/phpdbg/phpdbg_watch.dep -MT sapi/phpdbg/phpdbg_watch.lo
+-include sapi/phpdbg/phpdbg_btree.dep
+sapi/phpdbg/phpdbg_btree.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_btree.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_btree.c -o sapi/phpdbg/phpdbg_btree.lo  -MMD -MF sapi/phpdbg/phpdbg_btree.dep -MT sapi/phpdbg/phpdbg_btree.lo
+-include sapi/phpdbg/phpdbg_sigsafe.dep
+sapi/phpdbg/phpdbg_sigsafe.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_sigsafe.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_sigsafe.c -o sapi/phpdbg/phpdbg_sigsafe.lo  -MMD -MF sapi/phpdbg/phpdbg_sigsafe.dep -MT sapi/phpdbg/phpdbg_sigsafe.lo
+-include sapi/phpdbg/phpdbg_io.dep
+sapi/phpdbg/phpdbg_io.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_io.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_io.c -o sapi/phpdbg/phpdbg_io.lo  -MMD -MF sapi/phpdbg/phpdbg_io.dep -MT sapi/phpdbg/phpdbg_io.lo
+-include sapi/phpdbg/phpdbg_out.dep
+sapi/phpdbg/phpdbg_out.lo: /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_out.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/phpdbg/ -I/Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/phpdbg/phpdbg_out.c -o sapi/phpdbg/phpdbg_out.lo  -MMD -MF sapi/phpdbg/phpdbg_out.dep -MT sapi/phpdbg/phpdbg_out.lo
+-include sapi/cgi/cgi_main.dep
+sapi/cgi/cgi_main.lo: /Users/alfiankan/CLionProjects/php-src/sapi/cgi/cgi_main.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Isapi/cgi/ -I/Users/alfiankan/CLionProjects/php-src/sapi/cgi/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/sapi/cgi/cgi_main.c -o sapi/cgi/cgi_main.lo  -MMD -MF sapi/cgi/cgi_main.dep -MT sapi/cgi/cgi_main.lo
+-include Zend/asm/make_combined_sysv_macho_gas.dep
+Zend/asm/make_combined_sysv_macho_gas.lo: /Users/alfiankan/CLionProjects/php-src/Zend/asm/make_combined_sysv_macho_gas.S
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/asm/ -I/Users/alfiankan/CLionProjects/php-src/Zend/asm/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/asm/make_combined_sysv_macho_gas.S -o Zend/asm/make_combined_sysv_macho_gas.lo  -MMD -MF Zend/asm/make_combined_sysv_macho_gas.dep -MT Zend/asm/make_combined_sysv_macho_gas.lo
+-include Zend/asm/jump_combined_sysv_macho_gas.dep
+Zend/asm/jump_combined_sysv_macho_gas.lo: /Users/alfiankan/CLionProjects/php-src/Zend/asm/jump_combined_sysv_macho_gas.S
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/asm/ -I/Users/alfiankan/CLionProjects/php-src/Zend/asm/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/asm/jump_combined_sysv_macho_gas.S -o Zend/asm/jump_combined_sysv_macho_gas.lo  -MMD -MF Zend/asm/jump_combined_sysv_macho_gas.dep -MT Zend/asm/jump_combined_sysv_macho_gas.lo
+-include TSRM/TSRM.dep
+TSRM/TSRM.lo: /Users/alfiankan/CLionProjects/php-src/TSRM/TSRM.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -ITSRM/ -I/Users/alfiankan/CLionProjects/php-src/TSRM/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/TSRM/TSRM.c -o TSRM/TSRM.lo  -MMD -MF TSRM/TSRM.dep -MT TSRM/TSRM.lo
+-include main/main.dep
+main/main.lo: /Users/alfiankan/CLionProjects/php-src/main/main.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/main.c -o main/main.lo  -MMD -MF main/main.dep -MT main/main.lo
+-include main/snprintf.dep
+main/snprintf.lo: /Users/alfiankan/CLionProjects/php-src/main/snprintf.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/snprintf.c -o main/snprintf.lo  -MMD -MF main/snprintf.dep -MT main/snprintf.lo
+-include main/spprintf.dep
+main/spprintf.lo: /Users/alfiankan/CLionProjects/php-src/main/spprintf.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/spprintf.c -o main/spprintf.lo  -MMD -MF main/spprintf.dep -MT main/spprintf.lo
+-include main/fopen_wrappers.dep
+main/fopen_wrappers.lo: /Users/alfiankan/CLionProjects/php-src/main/fopen_wrappers.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/fopen_wrappers.c -o main/fopen_wrappers.lo  -MMD -MF main/fopen_wrappers.dep -MT main/fopen_wrappers.lo
+-include main/php_scandir.dep
+main/php_scandir.lo: /Users/alfiankan/CLionProjects/php-src/main/php_scandir.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/php_scandir.c -o main/php_scandir.lo  -MMD -MF main/php_scandir.dep -MT main/php_scandir.lo
+-include main/php_ini_builder.dep
+main/php_ini_builder.lo: /Users/alfiankan/CLionProjects/php-src/main/php_ini_builder.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/php_ini_builder.c -o main/php_ini_builder.lo  -MMD -MF main/php_ini_builder.dep -MT main/php_ini_builder.lo
+-include main/php_ini.dep
+main/php_ini.lo: /Users/alfiankan/CLionProjects/php-src/main/php_ini.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/php_ini.c -o main/php_ini.lo  -MMD -MF main/php_ini.dep -MT main/php_ini.lo
+-include main/SAPI.dep
+main/SAPI.lo: /Users/alfiankan/CLionProjects/php-src/main/SAPI.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/SAPI.c -o main/SAPI.lo  -MMD -MF main/SAPI.dep -MT main/SAPI.lo
+-include main/rfc1867.dep
+main/rfc1867.lo: /Users/alfiankan/CLionProjects/php-src/main/rfc1867.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/rfc1867.c -o main/rfc1867.lo  -MMD -MF main/rfc1867.dep -MT main/rfc1867.lo
+-include main/php_content_types.dep
+main/php_content_types.lo: /Users/alfiankan/CLionProjects/php-src/main/php_content_types.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/php_content_types.c -o main/php_content_types.lo  -MMD -MF main/php_content_types.dep -MT main/php_content_types.lo
+-include main/strlcpy.dep
+main/strlcpy.lo: /Users/alfiankan/CLionProjects/php-src/main/strlcpy.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/strlcpy.c -o main/strlcpy.lo  -MMD -MF main/strlcpy.dep -MT main/strlcpy.lo
+-include main/strlcat.dep
+main/strlcat.lo: /Users/alfiankan/CLionProjects/php-src/main/strlcat.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/strlcat.c -o main/strlcat.lo  -MMD -MF main/strlcat.dep -MT main/strlcat.lo
+-include main/explicit_bzero.dep
+main/explicit_bzero.lo: /Users/alfiankan/CLionProjects/php-src/main/explicit_bzero.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/explicit_bzero.c -o main/explicit_bzero.lo  -MMD -MF main/explicit_bzero.dep -MT main/explicit_bzero.lo
+-include main/reentrancy.dep
+main/reentrancy.lo: /Users/alfiankan/CLionProjects/php-src/main/reentrancy.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/reentrancy.c -o main/reentrancy.lo  -MMD -MF main/reentrancy.dep -MT main/reentrancy.lo
+-include main/php_variables.dep
+main/php_variables.lo: /Users/alfiankan/CLionProjects/php-src/main/php_variables.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/php_variables.c -o main/php_variables.lo  -MMD -MF main/php_variables.dep -MT main/php_variables.lo
+-include main/php_ticks.dep
+main/php_ticks.lo: /Users/alfiankan/CLionProjects/php-src/main/php_ticks.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/php_ticks.c -o main/php_ticks.lo  -MMD -MF main/php_ticks.dep -MT main/php_ticks.lo
+-include main/network.dep
+main/network.lo: /Users/alfiankan/CLionProjects/php-src/main/network.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/network.c -o main/network.lo  -MMD -MF main/network.dep -MT main/network.lo
+-include main/php_open_temporary_file.dep
+main/php_open_temporary_file.lo: /Users/alfiankan/CLionProjects/php-src/main/php_open_temporary_file.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/php_open_temporary_file.c -o main/php_open_temporary_file.lo  -MMD -MF main/php_open_temporary_file.dep -MT main/php_open_temporary_file.lo
+-include main/php_odbc_utils.dep
+main/php_odbc_utils.lo: /Users/alfiankan/CLionProjects/php-src/main/php_odbc_utils.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/php_odbc_utils.c -o main/php_odbc_utils.lo  -MMD -MF main/php_odbc_utils.dep -MT main/php_odbc_utils.lo
+-include main/safe_bcmp.dep
+main/safe_bcmp.lo: /Users/alfiankan/CLionProjects/php-src/main/safe_bcmp.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/safe_bcmp.c -o main/safe_bcmp.lo  -MMD -MF main/safe_bcmp.dep -MT main/safe_bcmp.lo
+-include main/output.dep
+main/output.lo: /Users/alfiankan/CLionProjects/php-src/main/output.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/output.c -o main/output.lo  -MMD -MF main/output.dep -MT main/output.lo
+-include main/getopt.dep
+main/getopt.lo: /Users/alfiankan/CLionProjects/php-src/main/getopt.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/getopt.c -o main/getopt.lo  -MMD -MF main/getopt.dep -MT main/getopt.lo
+-include main/php_syslog.dep
+main/php_syslog.lo: /Users/alfiankan/CLionProjects/php-src/main/php_syslog.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/php_syslog.c -o main/php_syslog.lo  -MMD -MF main/php_syslog.dep -MT main/php_syslog.lo
+-include main/fastcgi.dep
+main/fastcgi.lo: /Users/alfiankan/CLionProjects/php-src/main/fastcgi.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/fastcgi.c -o main/fastcgi.lo  -MMD -MF main/fastcgi.dep -MT main/fastcgi.lo
+-include main/streams/streams.dep
+main/streams/streams.lo: /Users/alfiankan/CLionProjects/php-src/main/streams/streams.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/streams/ -I/Users/alfiankan/CLionProjects/php-src/main/streams/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/streams/streams.c -o main/streams/streams.lo  -MMD -MF main/streams/streams.dep -MT main/streams/streams.lo
+-include main/streams/cast.dep
+main/streams/cast.lo: /Users/alfiankan/CLionProjects/php-src/main/streams/cast.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/streams/ -I/Users/alfiankan/CLionProjects/php-src/main/streams/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/streams/cast.c -o main/streams/cast.lo  -MMD -MF main/streams/cast.dep -MT main/streams/cast.lo
+-include main/streams/memory.dep
+main/streams/memory.lo: /Users/alfiankan/CLionProjects/php-src/main/streams/memory.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/streams/ -I/Users/alfiankan/CLionProjects/php-src/main/streams/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/streams/memory.c -o main/streams/memory.lo  -MMD -MF main/streams/memory.dep -MT main/streams/memory.lo
+-include main/streams/filter.dep
+main/streams/filter.lo: /Users/alfiankan/CLionProjects/php-src/main/streams/filter.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/streams/ -I/Users/alfiankan/CLionProjects/php-src/main/streams/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/streams/filter.c -o main/streams/filter.lo  -MMD -MF main/streams/filter.dep -MT main/streams/filter.lo
+-include main/streams/plain_wrapper.dep
+main/streams/plain_wrapper.lo: /Users/alfiankan/CLionProjects/php-src/main/streams/plain_wrapper.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/streams/ -I/Users/alfiankan/CLionProjects/php-src/main/streams/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/streams/plain_wrapper.c -o main/streams/plain_wrapper.lo  -MMD -MF main/streams/plain_wrapper.dep -MT main/streams/plain_wrapper.lo
+-include main/streams/userspace.dep
+main/streams/userspace.lo: /Users/alfiankan/CLionProjects/php-src/main/streams/userspace.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/streams/ -I/Users/alfiankan/CLionProjects/php-src/main/streams/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/streams/userspace.c -o main/streams/userspace.lo  -MMD -MF main/streams/userspace.dep -MT main/streams/userspace.lo
+-include main/streams/transports.dep
+main/streams/transports.lo: /Users/alfiankan/CLionProjects/php-src/main/streams/transports.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/streams/ -I/Users/alfiankan/CLionProjects/php-src/main/streams/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/streams/transports.c -o main/streams/transports.lo  -MMD -MF main/streams/transports.dep -MT main/streams/transports.lo
+-include main/streams/xp_socket.dep
+main/streams/xp_socket.lo: /Users/alfiankan/CLionProjects/php-src/main/streams/xp_socket.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/streams/ -I/Users/alfiankan/CLionProjects/php-src/main/streams/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/streams/xp_socket.c -o main/streams/xp_socket.lo  -MMD -MF main/streams/xp_socket.dep -MT main/streams/xp_socket.lo
+-include main/streams/mmap.dep
+main/streams/mmap.lo: /Users/alfiankan/CLionProjects/php-src/main/streams/mmap.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/streams/ -I/Users/alfiankan/CLionProjects/php-src/main/streams/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/streams/mmap.c -o main/streams/mmap.lo  -MMD -MF main/streams/mmap.dep -MT main/streams/mmap.lo
+-include main/streams/glob_wrapper.dep
+main/streams/glob_wrapper.lo: /Users/alfiankan/CLionProjects/php-src/main/streams/glob_wrapper.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/streams/ -I/Users/alfiankan/CLionProjects/php-src/main/streams/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c /Users/alfiankan/CLionProjects/php-src/main/streams/glob_wrapper.c -o main/streams/glob_wrapper.lo  -MMD -MF main/streams/glob_wrapper.dep -MT main/streams/glob_wrapper.lo
+-include main/internal_functions.dep
+main/internal_functions.lo: main/internal_functions.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c main/internal_functions.c -o main/internal_functions.lo  -MMD -MF main/internal_functions.dep -MT main/internal_functions.lo
+-include main/internal_functions_cli.dep
+main/internal_functions_cli.lo: main/internal_functions_cli.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -Imain/ -I/Users/alfiankan/CLionProjects/php-src/main/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -c main/internal_functions_cli.c -o main/internal_functions_cli.lo  -MMD -MF main/internal_functions_cli.dep -MT main/internal_functions_cli.lo
+-include Zend/Optimizer/block_pass.dep
+Zend/Optimizer/block_pass.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/block_pass.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/block_pass.c -o Zend/Optimizer/block_pass.lo  -MMD -MF Zend/Optimizer/block_pass.dep -MT Zend/Optimizer/block_pass.lo
+-include Zend/Optimizer/compact_literals.dep
+Zend/Optimizer/compact_literals.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/compact_literals.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/compact_literals.c -o Zend/Optimizer/compact_literals.lo  -MMD -MF Zend/Optimizer/compact_literals.dep -MT Zend/Optimizer/compact_literals.lo
+-include Zend/Optimizer/compact_vars.dep
+Zend/Optimizer/compact_vars.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/compact_vars.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/compact_vars.c -o Zend/Optimizer/compact_vars.lo  -MMD -MF Zend/Optimizer/compact_vars.dep -MT Zend/Optimizer/compact_vars.lo
+-include Zend/Optimizer/dce.dep
+Zend/Optimizer/dce.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/dce.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/dce.c -o Zend/Optimizer/dce.lo  -MMD -MF Zend/Optimizer/dce.dep -MT Zend/Optimizer/dce.lo
+-include Zend/Optimizer/dfa_pass.dep
+Zend/Optimizer/dfa_pass.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/dfa_pass.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/dfa_pass.c -o Zend/Optimizer/dfa_pass.lo  -MMD -MF Zend/Optimizer/dfa_pass.dep -MT Zend/Optimizer/dfa_pass.lo
+-include Zend/Optimizer/escape_analysis.dep
+Zend/Optimizer/escape_analysis.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/escape_analysis.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/escape_analysis.c -o Zend/Optimizer/escape_analysis.lo  -MMD -MF Zend/Optimizer/escape_analysis.dep -MT Zend/Optimizer/escape_analysis.lo
+-include Zend/Optimizer/nop_removal.dep
+Zend/Optimizer/nop_removal.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/nop_removal.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/nop_removal.c -o Zend/Optimizer/nop_removal.lo  -MMD -MF Zend/Optimizer/nop_removal.dep -MT Zend/Optimizer/nop_removal.lo
+-include Zend/Optimizer/optimize_func_calls.dep
+Zend/Optimizer/optimize_func_calls.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/optimize_func_calls.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/optimize_func_calls.c -o Zend/Optimizer/optimize_func_calls.lo  -MMD -MF Zend/Optimizer/optimize_func_calls.dep -MT Zend/Optimizer/optimize_func_calls.lo
+-include Zend/Optimizer/optimize_temp_vars_5.dep
+Zend/Optimizer/optimize_temp_vars_5.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/optimize_temp_vars_5.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/optimize_temp_vars_5.c -o Zend/Optimizer/optimize_temp_vars_5.lo  -MMD -MF Zend/Optimizer/optimize_temp_vars_5.dep -MT Zend/Optimizer/optimize_temp_vars_5.lo
+-include Zend/Optimizer/pass1.dep
+Zend/Optimizer/pass1.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/pass1.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/pass1.c -o Zend/Optimizer/pass1.lo  -MMD -MF Zend/Optimizer/pass1.dep -MT Zend/Optimizer/pass1.lo
+-include Zend/Optimizer/pass3.dep
+Zend/Optimizer/pass3.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/pass3.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/pass3.c -o Zend/Optimizer/pass3.lo  -MMD -MF Zend/Optimizer/pass3.dep -MT Zend/Optimizer/pass3.lo
+-include Zend/Optimizer/sccp.dep
+Zend/Optimizer/sccp.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/sccp.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/sccp.c -o Zend/Optimizer/sccp.lo  -MMD -MF Zend/Optimizer/sccp.dep -MT Zend/Optimizer/sccp.lo
+-include Zend/Optimizer/scdf.dep
+Zend/Optimizer/scdf.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/scdf.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/scdf.c -o Zend/Optimizer/scdf.lo  -MMD -MF Zend/Optimizer/scdf.dep -MT Zend/Optimizer/scdf.lo
+-include Zend/Optimizer/zend_call_graph.dep
+Zend/Optimizer/zend_call_graph.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_call_graph.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_call_graph.c -o Zend/Optimizer/zend_call_graph.lo  -MMD -MF Zend/Optimizer/zend_call_graph.dep -MT Zend/Optimizer/zend_call_graph.lo
+-include Zend/Optimizer/zend_cfg.dep
+Zend/Optimizer/zend_cfg.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_cfg.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_cfg.c -o Zend/Optimizer/zend_cfg.lo  -MMD -MF Zend/Optimizer/zend_cfg.dep -MT Zend/Optimizer/zend_cfg.lo
+-include Zend/Optimizer/zend_dfg.dep
+Zend/Optimizer/zend_dfg.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_dfg.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_dfg.c -o Zend/Optimizer/zend_dfg.lo  -MMD -MF Zend/Optimizer/zend_dfg.dep -MT Zend/Optimizer/zend_dfg.lo
+-include Zend/Optimizer/zend_dump.dep
+Zend/Optimizer/zend_dump.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_dump.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_dump.c -o Zend/Optimizer/zend_dump.lo  -MMD -MF Zend/Optimizer/zend_dump.dep -MT Zend/Optimizer/zend_dump.lo
+-include Zend/Optimizer/zend_func_info.dep
+Zend/Optimizer/zend_func_info.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_func_info.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_func_info.c -o Zend/Optimizer/zend_func_info.lo  -MMD -MF Zend/Optimizer/zend_func_info.dep -MT Zend/Optimizer/zend_func_info.lo
+-include Zend/Optimizer/zend_inference.dep
+Zend/Optimizer/zend_inference.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_inference.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_inference.c -o Zend/Optimizer/zend_inference.lo  -MMD -MF Zend/Optimizer/zend_inference.dep -MT Zend/Optimizer/zend_inference.lo
+-include Zend/Optimizer/zend_optimizer.dep
+Zend/Optimizer/zend_optimizer.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_optimizer.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_optimizer.c -o Zend/Optimizer/zend_optimizer.lo  -MMD -MF Zend/Optimizer/zend_optimizer.dep -MT Zend/Optimizer/zend_optimizer.lo
+-include Zend/Optimizer/zend_ssa.dep
+Zend/Optimizer/zend_ssa.lo: /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_ssa.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/Optimizer/zend_ssa.c -o Zend/Optimizer/zend_ssa.lo  -MMD -MF Zend/Optimizer/zend_ssa.dep -MT Zend/Optimizer/zend_ssa.lo
+-include Zend/zend_alloc.dep
+Zend/zend_alloc.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_alloc.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_alloc.c -o Zend/zend_alloc.lo  -MMD -MF Zend/zend_alloc.dep -MT Zend/zend_alloc.lo
+-include Zend/zend_API.dep
+Zend/zend_API.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_API.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_API.c -o Zend/zend_API.lo  -MMD -MF Zend/zend_API.dep -MT Zend/zend_API.lo
+-include Zend/zend_ast.dep
+Zend/zend_ast.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_ast.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_ast.c -o Zend/zend_ast.lo  -MMD -MF Zend/zend_ast.dep -MT Zend/zend_ast.lo
+-include Zend/zend_atomic.dep
+Zend/zend_atomic.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_atomic.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_atomic.c -o Zend/zend_atomic.lo  -MMD -MF Zend/zend_atomic.dep -MT Zend/zend_atomic.lo
+-include Zend/zend_attributes.dep
+Zend/zend_attributes.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_attributes.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_attributes.c -o Zend/zend_attributes.lo  -MMD -MF Zend/zend_attributes.dep -MT Zend/zend_attributes.lo
+-include Zend/zend_builtin_functions.dep
+Zend/zend_builtin_functions.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_builtin_functions.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_builtin_functions.c -o Zend/zend_builtin_functions.lo  -MMD -MF Zend/zend_builtin_functions.dep -MT Zend/zend_builtin_functions.lo
+-include Zend/zend_call_stack.dep
+Zend/zend_call_stack.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_call_stack.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_call_stack.c -o Zend/zend_call_stack.lo  -MMD -MF Zend/zend_call_stack.dep -MT Zend/zend_call_stack.lo
+-include Zend/zend_closures.dep
+Zend/zend_closures.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_closures.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_closures.c -o Zend/zend_closures.lo  -MMD -MF Zend/zend_closures.dep -MT Zend/zend_closures.lo
+-include Zend/zend_compile.dep
+Zend/zend_compile.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_compile.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_compile.c -o Zend/zend_compile.lo  -MMD -MF Zend/zend_compile.dep -MT Zend/zend_compile.lo
+-include Zend/llvm_wrapper.dep
+Zend/llvm_wrapper.lo: /Users/alfiankan/CLionProjects/php-src/Zend/llvm_wrapper.cpp
+	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CXXFLAGS_CLEAN) $(EXTRA_CXXFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/llvm_wrapper.cpp -o Zend/llvm_wrapper.lo  -MMD -MF Zend/llvm_wrapper.dep -MT Zend/llvm_wrapper.lo
+-include Zend/zend_constants.dep
+Zend/zend_constants.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_constants.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_constants.c -o Zend/zend_constants.lo  -MMD -MF Zend/zend_constants.dep -MT Zend/zend_constants.lo
+-include Zend/zend_cpuinfo.dep
+Zend/zend_cpuinfo.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_cpuinfo.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_cpuinfo.c -o Zend/zend_cpuinfo.lo  -MMD -MF Zend/zend_cpuinfo.dep -MT Zend/zend_cpuinfo.lo
+-include Zend/zend_default_classes.dep
+Zend/zend_default_classes.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_default_classes.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_default_classes.c -o Zend/zend_default_classes.lo  -MMD -MF Zend/zend_default_classes.dep -MT Zend/zend_default_classes.lo
+-include Zend/zend_dtrace.dep
+Zend/zend_dtrace.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_dtrace.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_dtrace.c -o Zend/zend_dtrace.lo  -MMD -MF Zend/zend_dtrace.dep -MT Zend/zend_dtrace.lo
+-include Zend/zend_enum.dep
+Zend/zend_enum.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_enum.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_enum.c -o Zend/zend_enum.lo  -MMD -MF Zend/zend_enum.dep -MT Zend/zend_enum.lo
+-include Zend/zend_exceptions.dep
+Zend/zend_exceptions.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_exceptions.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_exceptions.c -o Zend/zend_exceptions.lo  -MMD -MF Zend/zend_exceptions.dep -MT Zend/zend_exceptions.lo
+-include Zend/zend_execute_API.dep
+Zend/zend_execute_API.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_execute_API.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_execute_API.c -o Zend/zend_execute_API.lo  -MMD -MF Zend/zend_execute_API.dep -MT Zend/zend_execute_API.lo
+-include Zend/zend_execute.dep
+Zend/zend_execute.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_execute.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_execute.c -o Zend/zend_execute.lo  -MMD -MF Zend/zend_execute.dep -MT Zend/zend_execute.lo
+-include Zend/zend_extensions.dep
+Zend/zend_extensions.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_extensions.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_extensions.c -o Zend/zend_extensions.lo  -MMD -MF Zend/zend_extensions.dep -MT Zend/zend_extensions.lo
+-include Zend/zend_fibers.dep
+Zend/zend_fibers.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_fibers.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_fibers.c -o Zend/zend_fibers.lo  -MMD -MF Zend/zend_fibers.dep -MT Zend/zend_fibers.lo
+-include Zend/zend_float.dep
+Zend/zend_float.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_float.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_float.c -o Zend/zend_float.lo  -MMD -MF Zend/zend_float.dep -MT Zend/zend_float.lo
+-include Zend/zend_frameless_function.dep
+Zend/zend_frameless_function.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_frameless_function.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_frameless_function.c -o Zend/zend_frameless_function.lo  -MMD -MF Zend/zend_frameless_function.dep -MT Zend/zend_frameless_function.lo
+-include Zend/zend_gc.dep
+Zend/zend_gc.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_gc.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_gc.c -o Zend/zend_gc.lo  -MMD -MF Zend/zend_gc.dep -MT Zend/zend_gc.lo
+-include Zend/zend_gdb.dep
+Zend/zend_gdb.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_gdb.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_gdb.c -o Zend/zend_gdb.lo  -MMD -MF Zend/zend_gdb.dep -MT Zend/zend_gdb.lo
+-include Zend/zend_generators.dep
+Zend/zend_generators.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_generators.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_generators.c -o Zend/zend_generators.lo  -MMD -MF Zend/zend_generators.dep -MT Zend/zend_generators.lo
+-include Zend/zend_hash.dep
+Zend/zend_hash.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_hash.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_hash.c -o Zend/zend_hash.lo  -MMD -MF Zend/zend_hash.dep -MT Zend/zend_hash.lo
+-include Zend/zend_highlight.dep
+Zend/zend_highlight.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_highlight.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_highlight.c -o Zend/zend_highlight.lo  -MMD -MF Zend/zend_highlight.dep -MT Zend/zend_highlight.lo
+-include Zend/zend_hrtime.dep
+Zend/zend_hrtime.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_hrtime.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_hrtime.c -o Zend/zend_hrtime.lo  -MMD -MF Zend/zend_hrtime.dep -MT Zend/zend_hrtime.lo
+-include Zend/zend_inheritance.dep
+Zend/zend_inheritance.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_inheritance.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_inheritance.c -o Zend/zend_inheritance.lo  -MMD -MF Zend/zend_inheritance.dep -MT Zend/zend_inheritance.lo
+-include Zend/zend_ini_parser.dep
+Zend/zend_ini_parser.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_ini_parser.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_ini_parser.c -o Zend/zend_ini_parser.lo  -MMD -MF Zend/zend_ini_parser.dep -MT Zend/zend_ini_parser.lo
+-include Zend/zend_ini_scanner.dep
+Zend/zend_ini_scanner.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_ini_scanner.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_ini_scanner.c -o Zend/zend_ini_scanner.lo  -MMD -MF Zend/zend_ini_scanner.dep -MT Zend/zend_ini_scanner.lo
+-include Zend/zend_ini.dep
+Zend/zend_ini.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_ini.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_ini.c -o Zend/zend_ini.lo  -MMD -MF Zend/zend_ini.dep -MT Zend/zend_ini.lo
+-include Zend/zend_interfaces.dep
+Zend/zend_interfaces.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_interfaces.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_interfaces.c -o Zend/zend_interfaces.lo  -MMD -MF Zend/zend_interfaces.dep -MT Zend/zend_interfaces.lo
+-include Zend/zend_iterators.dep
+Zend/zend_iterators.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_iterators.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_iterators.c -o Zend/zend_iterators.lo  -MMD -MF Zend/zend_iterators.dep -MT Zend/zend_iterators.lo
+-include Zend/zend_language_parser.dep
+Zend/zend_language_parser.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_parser.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_parser.c -o Zend/zend_language_parser.lo  -MMD -MF Zend/zend_language_parser.dep -MT Zend/zend_language_parser.lo
+-include Zend/zend_language_scanner.dep
+Zend/zend_language_scanner.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_scanner.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_language_scanner.c -o Zend/zend_language_scanner.lo  -MMD -MF Zend/zend_language_scanner.dep -MT Zend/zend_language_scanner.lo
+-include Zend/zend_list.dep
+Zend/zend_list.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_list.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_list.c -o Zend/zend_list.lo  -MMD -MF Zend/zend_list.dep -MT Zend/zend_list.lo
+-include Zend/zend_llist.dep
+Zend/zend_llist.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_llist.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_llist.c -o Zend/zend_llist.lo  -MMD -MF Zend/zend_llist.dep -MT Zend/zend_llist.lo
+-include Zend/zend_max_execution_timer.dep
+Zend/zend_max_execution_timer.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_max_execution_timer.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_max_execution_timer.c -o Zend/zend_max_execution_timer.lo  -MMD -MF Zend/zend_max_execution_timer.dep -MT Zend/zend_max_execution_timer.lo
+-include Zend/zend_multibyte.dep
+Zend/zend_multibyte.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_multibyte.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_multibyte.c -o Zend/zend_multibyte.lo  -MMD -MF Zend/zend_multibyte.dep -MT Zend/zend_multibyte.lo
+-include Zend/zend_object_handlers.dep
+Zend/zend_object_handlers.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_object_handlers.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_object_handlers.c -o Zend/zend_object_handlers.lo  -MMD -MF Zend/zend_object_handlers.dep -MT Zend/zend_object_handlers.lo
+-include Zend/zend_objects_API.dep
+Zend/zend_objects_API.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_objects_API.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_objects_API.c -o Zend/zend_objects_API.lo  -MMD -MF Zend/zend_objects_API.dep -MT Zend/zend_objects_API.lo
+-include Zend/zend_objects.dep
+Zend/zend_objects.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_objects.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_objects.c -o Zend/zend_objects.lo  -MMD -MF Zend/zend_objects.dep -MT Zend/zend_objects.lo
+-include Zend/zend_observer.dep
+Zend/zend_observer.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_observer.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_observer.c -o Zend/zend_observer.lo  -MMD -MF Zend/zend_observer.dep -MT Zend/zend_observer.lo
+-include Zend/zend_opcode.dep
+Zend/zend_opcode.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_opcode.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_opcode.c -o Zend/zend_opcode.lo  -MMD -MF Zend/zend_opcode.dep -MT Zend/zend_opcode.lo
+-include Zend/zend_operators.dep
+Zend/zend_operators.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_operators.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_operators.c -o Zend/zend_operators.lo  -MMD -MF Zend/zend_operators.dep -MT Zend/zend_operators.lo
+-include Zend/zend_property_hooks.dep
+Zend/zend_property_hooks.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_property_hooks.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_property_hooks.c -o Zend/zend_property_hooks.lo  -MMD -MF Zend/zend_property_hooks.dep -MT Zend/zend_property_hooks.lo
+-include Zend/zend_ptr_stack.dep
+Zend/zend_ptr_stack.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_ptr_stack.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_ptr_stack.c -o Zend/zend_ptr_stack.lo  -MMD -MF Zend/zend_ptr_stack.dep -MT Zend/zend_ptr_stack.lo
+-include Zend/zend_signal.dep
+Zend/zend_signal.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_signal.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_signal.c -o Zend/zend_signal.lo  -MMD -MF Zend/zend_signal.dep -MT Zend/zend_signal.lo
+-include Zend/zend_smart_str.dep
+Zend/zend_smart_str.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_smart_str.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_smart_str.c -o Zend/zend_smart_str.lo  -MMD -MF Zend/zend_smart_str.dep -MT Zend/zend_smart_str.lo
+-include Zend/zend_sort.dep
+Zend/zend_sort.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_sort.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_sort.c -o Zend/zend_sort.lo  -MMD -MF Zend/zend_sort.dep -MT Zend/zend_sort.lo
+-include Zend/zend_stack.dep
+Zend/zend_stack.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_stack.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_stack.c -o Zend/zend_stack.lo  -MMD -MF Zend/zend_stack.dep -MT Zend/zend_stack.lo
+-include Zend/zend_stream.dep
+Zend/zend_stream.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_stream.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_stream.c -o Zend/zend_stream.lo  -MMD -MF Zend/zend_stream.dep -MT Zend/zend_stream.lo
+-include Zend/zend_string.dep
+Zend/zend_string.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_string.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_string.c -o Zend/zend_string.lo  -MMD -MF Zend/zend_string.dep -MT Zend/zend_string.lo
+-include Zend/zend_strtod.dep
+Zend/zend_strtod.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_strtod.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_strtod.c -o Zend/zend_strtod.lo  -MMD -MF Zend/zend_strtod.dep -MT Zend/zend_strtod.lo
+-include Zend/zend_system_id.dep
+Zend/zend_system_id.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_system_id.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_system_id.c -o Zend/zend_system_id.lo  -MMD -MF Zend/zend_system_id.dep -MT Zend/zend_system_id.lo
+-include Zend/zend_variables.dep
+Zend/zend_variables.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_variables.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_variables.c -o Zend/zend_variables.lo  -MMD -MF Zend/zend_variables.dep -MT Zend/zend_variables.lo
+-include Zend/zend_virtual_cwd.dep
+Zend/zend_virtual_cwd.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_virtual_cwd.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_virtual_cwd.c -o Zend/zend_virtual_cwd.lo  -MMD -MF Zend/zend_virtual_cwd.dep -MT Zend/zend_virtual_cwd.lo
+-include Zend/zend_vm_opcodes.dep
+Zend/zend_vm_opcodes.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_vm_opcodes.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_vm_opcodes.c -o Zend/zend_vm_opcodes.lo  -MMD -MF Zend/zend_vm_opcodes.dep -MT Zend/zend_vm_opcodes.lo
+-include Zend/zend_weakrefs.dep
+Zend/zend_weakrefs.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend_weakrefs.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend_weakrefs.c -o Zend/zend_weakrefs.lo  -MMD -MF Zend/zend_weakrefs.dep -MT Zend/zend_weakrefs.lo
+-include Zend/zend.dep
+Zend/zend.lo: /Users/alfiankan/CLionProjects/php-src/Zend/zend.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -IZend/ -I/Users/alfiankan/CLionProjects/php-src/Zend/ $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DSHADOW_STACK_SYSCALL=0 -c /Users/alfiankan/CLionProjects/php-src/Zend/zend.c -o Zend/zend.lo  -MMD -MF Zend/zend.dep -MT Zend/zend.lo
