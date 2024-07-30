@@ -1,4 +1,5 @@
 <?php
+//include 'lib.php';
 
 
 function multivitamin(int $age, bool $man): int {
@@ -8,6 +9,10 @@ function multivitamin(int $age, bool $man): int {
         $age += $mask;
     }
     return $age + 90;
+}
+
+function main(): int {
+    return 90;
 }
 
 /* function fibonnaci(int $nth): int { */
