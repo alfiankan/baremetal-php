@@ -12,6 +12,27 @@ This is fork from PHP-SRC to use the parser and AST to build LLVM IR and compile
 i currently building to learn about low level engineering and platform to pursue my interest in reverse engineering and
 programming low level system.
 
+
+## roadmap
+1.
+- single file module code
+- function declaration
+- data store load assignment (primitive)
+- binary op
+- logical op
+- call function
+- function arguments
+- branch condition if else 
+- toolchain build compile
+
+2. 
+- for loop
+- while loop
+- heap data and GC string
+
+
+
+
 ## The Goals
 - full function no class []
 - simple program (fibonnaci) []
